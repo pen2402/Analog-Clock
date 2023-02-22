@@ -8,12 +8,26 @@ export function WatchComponent() {
     const timer = setInterval(() => {
       setWatchTime(new Date());
     }, 1000);
-    return clearInterval(timer);
+    return (() => clearInterval(timer));
   }, []);
+
+  const watchHour = () => {
+    return watchTime.getHours()%12;
+  }
+
+  const watchMinute = () => {
+    return watchTime.getMinutes();
+  }
+
+  const watchSecond = () => {
+    return watchTime.getSeconds();
+  }
 
   return (
     <div>
-      { String(watchTime) }
+      { watchHour() }:
+      { watchMinute() }:
+      { watchSecond() }
     </div>
   );
 }
