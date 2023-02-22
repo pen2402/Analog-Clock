@@ -3,4 +3,5 @@
   top: var(--tooltip-pos-y);
   left: var(--tooltip-pos-x);
   user-select: none;
+  visibility: var(--tooltip-visibility);
 }

@@ -5,23 +5,23 @@ import { useRecoilState } from 'recoil';
 import { watchTimeState } from '../store/atoms';
 
 export function WatchComponent() {
-  const [watchTimeInfo, setWatchTimeInfo] = useState(new Date());
+  const [watchDateInfo, setWatchDateInfo] = useState(new Date());
   const [watchTime, setWatchTime] = useRecoilState(watchTimeState);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setWatchTimeInfo(new Date());
+      setWatchDateInfo(new Date());
     }, 1000);
     return (() => clearInterval(timer));
   }, []);
 
   useEffect(() => {
     setWatchTime({
-      hour: watchTimeInfo.getHours()%12,
-      minute: watchTimeInfo.getMinutes(),
-      second: watchTimeInfo.getSeconds()
+      hour: watchDateInfo.getHours()%12,
+      minute: watchDateInfo.getMinutes(),
+      second: watchDateInfo.getSeconds()
     })
-  }, [watchTimeInfo]);
+  }, [watchDateInfo]);
 
   const watchHourHand = () => {
     document.documentElement.style.setProperty('--watch-hour-degree', `${ (watchTime.hour/12)*360 }deg`);
@@ -48,8 +48,13 @@ export function WatchComponent() {
   }
 
   function handleMouseTooltipPosition(e) {
+    document.documentElement.style.setProperty('--tooltip-visibility', 'visible');
     document.documentElement.style.setProperty('--tooltip-pos-x', `${ e.clientX+10 }px`);
     document.documentElement.style.setProperty('--tooltip-pos-y', `${ e.clientY-24 }px`);
+  }
+
+  function handleCloseMouseTooltip(e) {
+    document.documentElement.style.setProperty('--tooltip-visibility', 'hidden');
   }
 
   return (
@@ -58,7 +63,9 @@ export function WatchComponent() {
       { watchTime.hour }:
       { watchTime.minute }:
       { watchTime.second }
-      <div className='watch' onMouseMove={(e) => handleMouseTooltipPosition(e)}>
+      <div className='watch'
+        onMouseMove={(e) => handleMouseTooltipPosition(e)}
+        onMouseLeave={() => handleCloseMouseTooltip()}>
         { watchHourHand() }
         { watchMinuteHand() }
         { watchSecondHand() }
