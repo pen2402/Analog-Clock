@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { MouseTooltipComponent } from './MouseTooltipComponent';
-import '../style/ClockComponent.css';
 import { useRecoilState } from 'recoil';
 import { clockTimeState } from '../store/atoms';
+import '../style/ClockComponent.css';
+
 
 export function ClockComponent() {
   const [clockDateInfo, setClockDateInfo] = useState(new Date());
   const [clockTime, setClockTime] = useRecoilState(clockTimeState);
 
   useEffect(() => {
+    document.documentElement.style.setProperty('--tooltip-visibility', 'hidden');
+
     const timer = setInterval(() => {
       setClockDateInfo(new Date());
     }, 1000);
+    
     return (() => clearInterval(timer));
   }, []);
 
@@ -47,6 +51,18 @@ export function ClockComponent() {
     );
   }
 
+  const clockIndex = () => {
+    let indexArray = [];
+    for (let i=0; i<12; i++) {
+      const style = {
+        transform: `translateY(-120px) rotate(${ i*30 }deg)`,
+        width: i%3 ? '2px' : '4px'
+      }
+      indexArray.push(<div key={i} className={`clock-index`} style={ style } />)
+    }
+    return indexArray
+  }
+
   function handleMouseTooltipPosition(e) {
     document.documentElement.style.setProperty('--tooltip-visibility', 'visible');
     document.documentElement.style.setProperty('--tooltip-pos-x', `${ e.clientX+10 }px`);
@@ -63,6 +79,7 @@ export function ClockComponent() {
       <div className='clock-body'
         onMouseMove={(e) => handleMouseTooltipPosition(e)}
         onMouseLeave={() => handleCloseMouseTooltip()}>
+        { clockIndex() }
         { clockHourHand() }
         { clockMinuteHand() }
         { clockSecondHand() }

@@ -12,6 +12,14 @@
   height: 300px;
 }
 
+.clock-index {
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  background-color: #1c232b;
+  transform-origin: 50% 125px;
+}
+
 .clock-hour-hand {
   position: absolute;
   width: 6px;
