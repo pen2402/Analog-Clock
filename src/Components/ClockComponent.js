@@ -25,10 +25,10 @@ export function ClockComponent() {
       minute: clockDateInfo.getMinutes(),
       second: clockDateInfo.getSeconds()
     })
-  }, [clockDateInfo]);
+  }, [clockDateInfo, setClockTime]);
 
   const clockHourHand = () => {
-    document.documentElement.style.setProperty('--clock-hour-degree', `${ ((clockTime.hour%12)/12)*360 }deg`);
+    document.documentElement.style.setProperty('--clock-hour-degree', `${ ((clockTime.hour%12)/12)*360 + (clockTime.minute/12)*6 }deg`);
     return (
       <div className='clock-hour-hand'>
       </div>
@@ -36,7 +36,7 @@ export function ClockComponent() {
   }
 
   const clockMinuteHand = () => {
-    document.documentElement.style.setProperty('--clock-minute-degree', `${ (clockTime.minute/60)*360 }deg`);
+    document.documentElement.style.setProperty('--clock-minute-degree', `${ (clockTime.minute/60)*360 + (clockTime.second/60)*6 }deg`);
     return (
       <div className='clock-minute-hand'>
       </div>
