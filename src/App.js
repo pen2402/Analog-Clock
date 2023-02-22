@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import { WatchComponent } from './Components/WatchComponent';
+import { ClockComponent } from './Components/ClockComponent';
 
 
 function App() {
   return (
-    <WatchComponent />
+    <ClockComponent />
   );
 }
 

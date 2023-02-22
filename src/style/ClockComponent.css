@@ -1,10 +1,10 @@
-.watch {
+.clock {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.watch-body {
+.clock-body {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,29 +12,29 @@
   height: 300px;
 }
 
-.watch-hour-hand {
+.clock-hour-hand {
   position: absolute;
   width: 6px;
   height: 80px;
   background-color: #1c232b;
-  transform: translateY(-50%) rotate(var(--watch-hour-degree));
+  transform: translateY(-50%) rotate(var(--clock-hour-degree));
   transform-origin: 50% 100%;
 }
 
-.watch-minute-hand {
+.clock-minute-hand {
   position: absolute;
   width: 4px;
   height: 100px;
   background-color: #1c232b;
-  transform: translateY(-50%) rotate(var(--watch-minute-degree));
+  transform: translateY(-50%) rotate(var(--clock-minute-degree));
   transform-origin: 50% 100%;
 }
 
-.watch-second-hand {
+.clock-second-hand {
   position: absolute;
   width: 2px;
   height: 110px;
   background-color: #1c232b;
-  transform: translateY(-50%) rotate(var(--watch-second-degree));
+  transform: translateY(-50%) rotate(var(--clock-second-degree));
   transform-origin: 50% 100%;
 }
