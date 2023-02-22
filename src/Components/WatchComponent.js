@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../style/WatchComponent.css';
 
 
 export function WatchComponent() {
@@ -23,11 +24,40 @@ export function WatchComponent() {
     return watchTime.getSeconds();
   }
 
+  const watchHourHand = () => {
+    document.documentElement.style.setProperty('--watch-hour-degree', `${ (watchHour()/12)*360 }deg`);
+    return (
+      <div class='watch-hour-hand'>
+      </div>
+    )
+  }
+
+  const watchMinuteHand = () => {
+    document.documentElement.style.setProperty('--watch-minute-degree', `${ (watchMinute()/60)*360 }deg`);
+    return (
+      <div class='watch-minute-hand'>
+      </div>
+    )
+  }
+
+  const watchSecondHand = () => {
+    document.documentElement.style.setProperty('--watch-second-degree', `${ (watchSecond()/60)*360 }deg`);
+    return (
+      <div class='watch-second-hand'>
+      </div>
+    )
+  }
+
   return (
     <div>
       { watchHour() }:
       { watchMinute() }:
       { watchSecond() }
+      <div class='watch'>
+        { watchHourHand() }
+        { watchMinuteHand() }
+        { watchSecondHand() }
+      </div>
     </div>
   );
 }
