@@ -9,9 +9,9 @@ export function MouseTooltipComponent() {
   
   return (
     <div className='tooltip'>
-      { watchTime.hour }:
-      { watchTime.minute }:
-      { watchTime.second }
+      { String(watchTime.hour).padStart(2, '0') }:
+      { String(watchTime.minute).padStart(2, '0') }:
+      { String(watchTime.second).padStart(2, '0') }
     </div>
   );
 }

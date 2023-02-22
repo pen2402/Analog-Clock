@@ -2,6 +2,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.watch-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 300px;
   height: 300px;
 }
@@ -9,26 +15,26 @@
 .watch-hour-hand {
   position: absolute;
   width: 6px;
-  height: 100px;
+  height: 80px;
   background-color: #1c232b;
-  transform: rotate(var(--watch-hour-degree));
+  transform: translateY(-50%) rotate(var(--watch-hour-degree));
   transform-origin: 50% 100%;
 }
 
 .watch-minute-hand {
   position: absolute;
-  width: 6px;
+  width: 4px;
   height: 100px;
   background-color: #1c232b;
-  transform: rotate(var(--watch-minute-degree));
+  transform: translateY(-50%) rotate(var(--watch-minute-degree));
   transform-origin: 50% 100%;
 }
 
 .watch-second-hand {
   position: absolute;
-  width: 6px;
-  height: 100px;
+  width: 2px;
+  height: 110px;
   background-color: #1c232b;
-  transform: rotate(var(--watch-second-degree));
+  transform: translateY(-50%) rotate(var(--watch-second-degree));
   transform-origin: 50% 100%;
 }

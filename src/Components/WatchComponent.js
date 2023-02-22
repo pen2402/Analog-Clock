@@ -17,14 +17,14 @@ export function WatchComponent() {
 
   useEffect(() => {
     setWatchTime({
-      hour: watchDateInfo.getHours()%12,
+      hour: watchDateInfo.getHours(),
       minute: watchDateInfo.getMinutes(),
       second: watchDateInfo.getSeconds()
     })
   }, [watchDateInfo]);
 
   const watchHourHand = () => {
-    document.documentElement.style.setProperty('--watch-hour-degree', `${ (watchTime.hour/12)*360 }deg`);
+    document.documentElement.style.setProperty('--watch-hour-degree', `${ ((watchTime.hour%12)/12)*360 }deg`);
     return (
       <div className='watch-hour-hand'>
       </div>
@@ -58,12 +58,9 @@ export function WatchComponent() {
   }
 
   return (
-    <div>
+    <div className='watch'>
       <MouseTooltipComponent />
-      { watchTime.hour }:
-      { watchTime.minute }:
-      { watchTime.second }
-      <div className='watch'
+      <div className='watch-body'
         onMouseMove={(e) => handleMouseTooltipPosition(e)}
         onMouseLeave={() => handleCloseMouseTooltip()}>
         { watchHourHand() }
