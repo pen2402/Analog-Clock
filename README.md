@@ -35,7 +35,7 @@ npm install
 npm start
 ```
 
-- http://localhost:3000로 접속하여 실행
+- `http://localhost:3000`으로 접속하여 실행
 
 ### 결과물
 
