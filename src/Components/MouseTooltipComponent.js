@@ -1,7 +1,7 @@
 import React from 'react';
-import '../style/MouseTooltipComponent.css';
 import { useRecoilValue } from 'recoil';
 import { clockTimeState } from '../store/atoms';
+import '../style/MouseTooltipComponent.css';
 
 
 export function MouseTooltipComponent() {
