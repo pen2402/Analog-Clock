@@ -69,7 +69,7 @@ export function ClockComponent() {
     document.documentElement.style.setProperty('--tooltip-pos-y', `${ e.clientY-24 }px`);
   }
 
-  function handleCloseMouseTooltip(e) {
+  function handleCloseMouseTooltip() {
     document.documentElement.style.setProperty('--tooltip-visibility', 'hidden');
   }
 
